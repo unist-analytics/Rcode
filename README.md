@@ -4,6 +4,6 @@
 ### Functions.R: source code for common functions
 
 # Rcode for example 2
-## Rscript_simulation_2.R: R code for example 2
-## simulated_data_example_2.RData: data for example 2
-## Functions.R: source code for common functions
+### Rscript_simulation_2.R: R code for example 2
+### simulated_data_example_2.RData: data for example 2
+### Functions.R: source code for common functions
