@@ -1,7 +1,7 @@
 # Rcode for example 1
-## Rscript_simulation_1.R: R code for example 1
-## simulated_data_example_1.RData: data for example 1
-## Functions.R: source code for common functions
+### Rscript_simulation_1.R: R code for example 1
+### simulated_data_example_1.RData: data for example 1
+### Functions.R: source code for common functions
 
 # Rcode for example 2
 ## Rscript_simulation_2.R: R code for example 2
