@@ -29,7 +29,7 @@ brks2<-c(0,25,50,75,100,125)
 
 load("simulated_data_example_2.RData")
 
-true_hrha<- quadratcount(d0$Ipp_high, n_H, n_H)  #true density that we need to c(0,0.4,0.6,1)
+true_hrha<- quadratcount(d0$Ipp_high, n_H, n_H)  
 hrha<-quadratcount(d0$Ipp_high_s, n_H, n_H)
 lrha<-quadratcount(d0$Ipp_high_s, n_L, n_L)
 AA=as.vector(qX_mat(true_hrha))
@@ -39,7 +39,7 @@ MM<-125
 #########################
 ### Simulated Data Plotting
 #########################
-draw_density_plot(data.frame(qX_mat(true_hrha)), c(0,0.5,1),brks2,M=MM) # example 1:c(0,0.1,0.3,1), example 2 setting 
+draw_density_plot(data.frame(qX_mat(true_hrha)), c(0,0.5,1),brks2,M=MM) 
 draw_contour_plot(d0$Ipp_high)  
 
 
