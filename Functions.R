@@ -87,17 +87,20 @@ mglmm_method<-function(lrha,lrla,hrla){
   
 }
 
-kdemethod<-function(Ipp_high_s){
+kdemethod<-function(Ipp_high_s,FF=bw.ppl){
+  ## FF is for bandwidth selection for Kernel Density: bw.CvL, bw.scott, bw.ppl
   xx<-Ipp_high_s$x
   yy<-Ipp_high_s$y
   
-  tmp1<-seq(-5,10,length.out=(n_H+1))[1:n_H]+15/n_H/2
-  tmp2<-seq(0,15,length.out=(n_H+1))[1:n_H]+15/n_H/2
+  tmp1<-seq(-5,10,length.out=(n2+1))[1:n2]+15/n2/2
+  tmp2<-seq(0,15,length.out=(n2+1))[1:n2]+15/n2/2
   
-  f1 <- kde2d(xx,yy , n = c(n_H,n_H),lims=c(range(tmp1),range(tmp2)))
+  b <- FF(Ipp_high_s)
   
-  result<-as.vector(f1$z*sum(true_hrha)/sum(f1$z))
-  return(list(result=result,coords=expand.grid(f1$x,f1$y)))
+  f2<-density.ppp(Ipp_high_s,xy=list(x=tmp1,y=tmp2),b)
+  
+  result<-as.vector(t(f2$v)*sum(true_hrha)/sum(f2$v))
+  return(list(result=result,coords=expand.grid(tmp1,tmp2)))
 }
 
 pkrigemethod<-function(grids,hrha){
