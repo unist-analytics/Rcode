@@ -49,8 +49,9 @@ draw_contour_plot(d0$Ipp_high)
 #########################
 
 
-fit_kde<-kdemethod(d0$Ipp_high_s)
-pred_kde<-fit_kde$result*(sum(true_hrha)/sum(fit_kde$result))
+fit_kde<-kdemethod(d0$Ipp_high_s,FF=bw.CvL)
+pred_kde<-fit_kde$result
+mean((AA-pred_kde)^2)
 
 
 F2<-data.frame(qX_mat(true_hrha))
@@ -65,7 +66,7 @@ grids<-fit_kde$coords
 
 fit_pkrige<-pkrigemethod(grids,hrha)
 pred_pkrige<-fit_pkrige*sum(true_hrha)/sum(fit_pkrige)
-
+mean((AA-pred_pkrige)^2)
 
 F3<-data.frame(qX_mat(true_hrha))
 F3$Freq<-pred_pkrige
@@ -85,7 +86,7 @@ t1
 
 lambda[lambda<0]<-0
 pred_mglmm<-lambda*(sum(true_hrha)/sum(lambda))
-
+mean((AA-pred_mglmm)^2)
 
 F1<-data.frame(qX_mat(true_hrha))
 F1$Freq<-pred_mglmm
